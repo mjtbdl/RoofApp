@@ -1,7 +1,155 @@
 <% layout('layouts/boilerplate') %>
-  <title>Home</title>
-  <div class="home-container">
-    <h1>Welcome to RoofApp</h1>
-    <p>Your gateway to the best campgrounds around!</p>
-    <a href="/campgrounds" class="btn btn-primary">View Campgrounds</a>
+
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070" 
+         alt="Camping Background" 
+         class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
   </div>
+  
+  <!-- Hero Content -->
+  <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+      Discover Your Next
+      <span class="text-forest-400">Adventure</span>
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+      Explore breathtaking campgrounds across Lithuania. From serene lakesides to mountain retreats, find your perfect outdoor escape.
+    </p>
+    
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a href="/campgrounds" class="bg-forest-600 hover:bg-forest-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl w-full sm:w-auto">
+        Explore Campgrounds
+      </a>
+      <a href="/campgrounds/new" class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-2 border-white/50 px-8 py-4 rounded-lg text-lg font-semibold transition-all w-full sm:w-auto">
+        Add Your Spot
+      </a>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Why Choose <span class="text-forest-600">RoofApp</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Your trusted companion for finding the perfect camping experience
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div class="bg-gray-50 rounded-xl p-8 hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-forest-100 rounded-full flex items-center justify-center mb-6">
+          <svg class="w-8 h-8 text-forest-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Verified Locations</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Every campground is reviewed and verified by our community to ensure quality and accuracy.
+        </p>
+      </div>
+      
+      <!-- Feature 2 -->
+      <div class="bg-gray-50 rounded-xl p-8 hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-forest-100 rounded-full flex items-center justify-center mb-6">
+          <svg class="w-8 h-8 text-forest-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Real Reviews</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Read honest reviews from fellow campers to make informed decisions about your next trip.
+        </p>
+      </div>
+      
+      <!-- Feature 3 -->
+      <div class="bg-gray-50 rounded-xl p-8 hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-forest-100 rounded-full flex items-center justify-center mb-6">
+          <svg class="w-8 h-8 text-forest-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Community Driven</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Join a passionate community of outdoor enthusiasts sharing their favorite camping spots.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-16 bg-forest-600">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div>
+        <div class="text-5xl font-bold text-white mb-2">200+</div>
+        <div class="text-forest-100 text-lg">Campgrounds</div>
+      </div>
+      <div>
+        <div class="text-5xl font-bold text-white mb-2">500+</div>
+        <div class="text-forest-100 text-lg">Happy Campers</div>
+      </div>
+      <div>
+        <div class="text-5xl font-bold text-white mb-2">1000+</div>
+        <div class="text-forest-100 text-lg">Reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-20 bg-gradient-to-br from-forest-50 to-earth-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+      Ready to Start Your Adventure?
+    </h2>
+    <p class="text-xl text-gray-600 mb-10 leading-relaxed">
+      Join thousands of outdoor enthusiasts discovering amazing campgrounds. Sign up today and share your favorite spots!
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a href="/register" class="bg-forest-600 hover:bg-forest-700 text-white px-10 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto">
+        Get Started Free
+      </a>
+      <a href="/campgrounds" class="bg-white hover:bg-gray-50 text-forest-600 border-2 border-forest-600 px-10 py-4 rounded-lg text-lg font-semibold transition-all w-full sm:w-auto">
+        Browse Campgrounds
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Additional Animations -->
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out;
+  }
+</style>

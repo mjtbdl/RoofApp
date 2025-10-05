@@ -1,9 +1,72 @@
-<% if (success && success.length > 0) { %>
-    <%= success %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-<% } %>
+<!-- Flash Messages Container -->
+<div class="fixed top-20 right-4 z-50 space-y-4 max-w-md w-full px-4">
+  
+  <!-- Success Message -->
+  <% if (success && success.length > 0) { %>
+    <div class="alert-auto-hide bg-green-50 border-l-4 border-green-500 rounded-lg shadow-lg p-4 flex items-start space-x-3 animate-slide-in">
+      <!-- Success Icon -->
+      <div class="flex-shrink-0">
+        <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </div>
+      
+      <!-- Message Content -->
+      <div class="flex-1">
+        <h3 class="text-sm font-semibold text-green-800">Success</h3>
+        <p class="text-sm text-green-700 mt-1"><%= success %></p>
+      </div>
+      
+      <!-- Close Button -->
+      <button type="button" onclick="this.parentElement.remove()" class="flex-shrink-0 text-green-500 hover:text-green-700 transition-colors focus:outline-none">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  <% } %>
 
-<% if (error && error.length > 0) { %>
-    <%= error %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-<% } %>
+  <!-- Error Message -->
+  <% if (error && error.length > 0) { %>
+    <div class="alert-auto-hide bg-red-50 border-l-4 border-red-500 rounded-lg shadow-lg p-4 flex items-start space-x-3 animate-slide-in">
+      <!-- Error Icon -->
+      <div class="flex-shrink-0">
+        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </div>
+      
+      <!-- Message Content -->
+      <div class="flex-1">
+        <h3 class="text-sm font-semibold text-red-800">Error</h3>
+        <p class="text-sm text-red-700 mt-1"><%= error %></p>
+      </div>
+      
+      <!-- Close Button -->
+      <button type="button" onclick="this.parentElement.remove()" class="flex-shrink-0 text-red-500 hover:text-red-700 transition-colors focus:outline-none">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  <% } %>
+
+</div>
+
+<!-- Add animation styles -->
+<style>
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+</style>

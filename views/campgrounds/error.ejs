@@ -1,7 +1,98 @@
 <% layout('layouts/boilerplate') %>
-  <title>Error <%= statusCode %></title>
-	<div class="error-container">
-		<h1>Error <%= statusCode %></h1>
-		<p><%= message %></p>
-		<a href="/campgrounds">Return to Campgrounds</a>
-	</div>
+
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4 py-12">
+  <div class="max-w-2xl w-full text-center">
+    
+    <!-- Error Icon/Illustration -->
+    <div class="mb-8">
+      <% if (statusCode === 404) { %>
+        <!-- 404 Illustration -->
+        <div class="inline-block">
+          <svg class="w-64 h-64 mx-auto text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <div class="text-8xl font-bold text-gray-400 -mt-12">404</div>
+        </div>
+      <% } else { %>
+        <!-- General Error Illustration -->
+        <div class="inline-block">
+          <svg class="w-48 h-48 mx-auto text-red-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+          </svg>
+          <div class="text-6xl font-bold text-gray-400">Error <%= statusCode %></div>
+        </div>
+      <% } %>
+    </div>
+
+    <!-- Error Content Card -->
+    <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+      <% if (statusCode === 404) { %>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Campground Not Found
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          <%= message || "The campground you're looking for seems to have wandered off into the wilderness. It might have been removed or never existed." %>
+        </p>
+      <% } else { %>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Oops! Something Went Wrong
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          <%= message || "We encountered an unexpected problem. Don't worry, our team has been notified and we're working on it!" %>
+        </p>
+      <% } %>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/campgrounds" 
+           class="inline-flex items-center justify-center bg-forest-600 hover:bg-forest-700 text-white px-8 py-3.5 rounded-lg font-semibold transition-all transform hover:scale-[1.02] shadow-md hover:shadow-lg">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          View All Campgrounds
+        </a>
+        <a href="/" 
+           class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-700 px-8 py-3.5 rounded-lg font-semibold transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          Back to Home
+        </a>
+      </div>
+    </div>
+
+    <!-- Helpful Links -->
+    <div class="mt-8 bg-forest-50 rounded-xl p-6 border border-forest-200">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3">Looking for something else?</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+        <a href="/campgrounds/new" class="text-forest-600 hover:text-forest-700 font-medium transition-colors flex items-center justify-center">
+          <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          </svg>
+          Add Campground
+        </a>
+        <a href="/campgrounds" class="text-forest-600 hover:text-forest-700 font-medium transition-colors flex items-center justify-center">
+          <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          Search Campgrounds
+        </a>
+        <a href="/register" class="text-forest-600 hover:text-forest-700 font-medium transition-colors flex items-center justify-center">
+          <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+          </svg>
+          Create Account
+        </a>
+      </div>
+    </div>
+
+    <!-- Error Details (for debugging - optional) -->
+    <% if (process.env.NODE_ENV === 'development') { %>
+      <div class="mt-6 text-left bg-gray-900 text-gray-300 rounded-lg p-4 text-xs font-mono overflow-x-auto">
+        <div class="text-red-400 font-semibold mb-2">Debug Info (Development Only):</div>
+        <div>Status Code: <%= statusCode %></div>
+        <div>Message: <%= message %></div>
+      </div>
+    <% } %>
+  </div>
+</div>
