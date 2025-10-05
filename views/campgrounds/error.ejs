@@ -1,0 +1,7 @@
+<% layout('layouts/boilerplate') %>
+  <title>Error <%= statusCode %></title>
+	<div class="error-container">
+		<h1>Error <%= statusCode %></h1>
+		<p><%= message %></p>
+		<a href="/campgrounds">Return to Campgrounds</a>
+	</div>

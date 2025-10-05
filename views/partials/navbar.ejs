@@ -1,0 +1,16 @@
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/campgrounds">Campgrounds</a></li>
+    <li><a href="/campgrounds/new">Add New Campground</a></li>
+  </ul>
+  <div>
+    <% if (currentUser) { %>
+      <span>Welcome, <%= currentUser.username %></span>
+      <a href="/logout">Logout</a>
+    <% } else { %>
+      <a href="/register">Register</a>
+      <a href="/login">Login</a>
+    <% } %>
+  </div>
+</nav>

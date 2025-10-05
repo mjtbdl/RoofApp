@@ -1,0 +1,39 @@
+<% layout('layouts/boilerplate') %>
+  <title><%= campground.title %></title>
+  <h1><%= campground.title %></h1>
+  <p><%= campground.description %></p>
+  <p>Location: <%= campground.location %></p>
+  <p>Price: $<%= campground.price %></p>
+  <p>Author: <%= campground.author.username %></p>
+  <img src="<%= campground.image %>" alt="<%= campground.title %>">
+  <h2>Reviews</h2>
+  <ul>
+    <% campground.reviews.forEach(function(review) { %>
+      <li>
+        <strong><%= review.author.username %>:</strong>
+        <strong>Rating:</strong> <%= review.rating %> - <%= review.body %> <form action="/campgrounds/<%= campground._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <% if (currentUser && currentUser._id.equals(review.author._id)) { %>
+          <button type="submit">Delete Review</button>
+        <% } %>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+  <h3>Add a Review</h3>
+  <% if (currentUser) { %>
+  <form action="/campgrounds/<%= campground._id %>/reviews" method="POST">
+    <label for="body">Review:</label>
+    <textarea name="body" id="body" required></textarea>
+    <label for="rating">Rating:</label>
+    <input type="number" name="rating" id="rating" min="1" max="10" required>
+    <button type="submit">Submit Review</button>
+  </form>
+  <% } else { %>
+    <p><a href="/login">Log in</a> to add a review.</p>
+  <% } %>
+  <% if (currentUser && currentUser._id.equals(campground.author._id)) { %>
+    <a href="/campgrounds/<%= campground._id %>/edit">Edit Campground</a>
+    <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST" style="display:inline;">
+      <button type="submit">Delete Campground</button>
+    </form>
+  <% } %>

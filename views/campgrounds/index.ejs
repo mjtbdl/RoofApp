@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') %>
+  <title>Campgrounds</title>
+  <h1>Campgrounds</h1>
+  <ul>
+    <% campgrounds.forEach(campground => { %>
+      <li>
+        <h2><a href="/campgrounds/<%= campground._id %>"><%= campground.title %></a></h2>
+        <p><%= campground.description %></p>
+        <p>Location: <%= campground.location %></p>
+        <p>Price: $<%= campground.price %></p>
+        <img src="<%= campground.image %>" alt="<%= campground.title %>">
+      </li>
+    <% }) %>
+  </ul>
