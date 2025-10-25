@@ -2,7 +2,6 @@ const Joi = require('joi');
 
 const campgroundSchema = Joi.object({
   title: Joi.string().required(),
-  image: Joi.string().uri().required(),
   location: Joi.string().required(),
   price: Joi.number().min(0).required(),
   description: Joi.string().required()

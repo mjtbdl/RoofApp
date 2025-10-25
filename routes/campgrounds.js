@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
 const mongoose = require('mongoose');
+const multer = require('multer');
+const {storage} = require('../cloudinary');
+const upload = multer({ storage });
 
 const catchAsync = require('../utils/catchAsync');
 const ExpressError = require('../utils/ExpressError');
@@ -31,9 +34,10 @@ function validateCampground(req, res, next) {
   next();
 }
 
-router.post('/', isLoggedIn, validateCampground, catchAsync(async (req, res) => {
-  const { title, image, location, price, description, author } = req.body;
-  const newCampground = new Campground({ title, image, location, price, description, author: req.user._id });
+router.post('/', isLoggedIn, upload.array('image'), validateCampground, catchAsync(async (req, res) => {
+  const { title, location, price, description, author } = req.body;
+  const images = req.files.map(file => ({ url: file.path, filename: file.filename }));
+  const newCampground = new Campground({ title, image: images, location, price, description, author: req.user._id });
   await newCampground.save();
   req.flash('success', 'Successfully created campground!');
   res.redirect('/campgrounds/' + newCampground._id);
